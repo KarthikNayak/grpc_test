@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: grpc-hello
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: grpc-hello
+  template:
+    metadata:
+      labels:
+        app: grpc-hello
+    spec:
+      containers:
+      - name: grpc-hello
+        image: karthiknayak94/grpc-hello:1.0.1
+        imagePullPolicy: IfNotPresent
+        ports:
+          - containerPort: 3001
